@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Factsheet Widget Test</title>
+  </head>
+  <body>
+    <h1>Testing Factsheet Widget Locally</h1>
+    <div id="factsheet-widget"></div>
+    <script src="factsheet-widget.js"></script>
+    <script>
+      FactsheetWidget.init({
+        targetId: "factsheet-widget",
+        apiKey: "123",
+        apiBaseUrl: "https://content-api-2020-5886a3310333.herokuapp.com/api",
+        title: "Test API - Factsheets",
+        showTitle: true,
+      });
+    </script>
+  </body>
+</html>
+
