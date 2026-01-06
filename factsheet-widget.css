@@ -42,6 +42,12 @@
   margin: 8px 0;
 }
 
+.factsheet-widget .item .intro {
+  color: #666;
+  line-height: 1.6;
+  margin: 8px 0;
+}
+
 .factsheet-widget .item .section {
   margin: 15px 0;
 }

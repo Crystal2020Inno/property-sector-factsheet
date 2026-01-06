@@ -65,7 +65,7 @@
               ? section.content
                   .map(
                     (content) =>
-                      `<div class="section-content">${escapeHtml(
+                      `<div class="section-content">${sanitizeHtml(
                         content
                       )}</div>`
                   )
@@ -84,6 +84,39 @@
     const div = document.createElement("div");
     div.textContent = text;
     return div.innerHTML;
+  }
+
+  // Sanitize HTML - allows safe HTML tags but removes dangerous ones
+  function sanitizeHtml(html) {
+    if (typeof html !== "string") return html;
+    
+    // Create a temporary div to parse the HTML
+    const temp = document.createElement("div");
+    temp.innerHTML = html;
+    
+    // Remove dangerous elements and attributes
+    const dangerousTags = ["script", "iframe", "object", "embed", "form", "input", "button"];
+    dangerousTags.forEach((tag) => {
+      const elements = temp.querySelectorAll(tag);
+      elements.forEach((el) => el.remove());
+    });
+    
+    // Remove dangerous attributes from all elements
+    const allElements = temp.querySelectorAll("*");
+    allElements.forEach((el) => {
+      // Remove event handlers and javascript: URLs
+      Array.from(el.attributes).forEach((attr) => {
+        if (
+          attr.name.startsWith("on") ||
+          (attr.name === "href" && attr.value.toLowerCase().startsWith("javascript:")) ||
+          (attr.name === "src" && attr.value.toLowerCase().startsWith("javascript:"))
+        ) {
+          el.removeAttribute(attr.name);
+        }
+      });
+    });
+    
+    return temp.innerHTML;
   }
 
   // Render newsletters
@@ -107,7 +140,7 @@
         <div class="item">
           <h3>${escapeHtml(title)}</h3>
           ${createdAt ? `<p><small>Created: ${createdAt}</small></p>` : ""}
-          <p>${escapeHtml(intro)}</p>
+          <div class="intro">${sanitizeHtml(intro)}</div>
           ${formatSections(sections)}
           ${
             link
