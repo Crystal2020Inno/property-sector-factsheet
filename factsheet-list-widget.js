@@ -37,7 +37,9 @@
     link.rel = "stylesheet";
     link.type = "text/css";
 
-    const scriptTag = document.querySelector('script[src*="factsheet-list-widget.js"]');
+    const scriptTag = document.querySelector(
+      'script[src*="factsheet-list-widget.js"]'
+    );
     if (scriptTag && scriptTag.src) {
       const baseUrl = scriptTag.src.replace("factsheet-list-widget.js", "");
       link.href = baseUrl + "factsheet-list-widget.css";
@@ -72,7 +74,11 @@
         ? new Date(factsheet.createdAt).toLocaleDateString()
         : "";
       const id = getFactsheetId(factsheet);
-      const detailUrl = detailPageUrl + (detailPageUrl.includes("?") ? "&" : "?") + "id=" + encodeURIComponent(id);
+      const detailUrl =
+        detailPageUrl +
+        (detailPageUrl.includes("?") ? "&" : "?") +
+        "id=" +
+        encodeURIComponent(id);
 
       html += `
         <div class="list-item">
@@ -121,8 +127,8 @@
 
       this.targetElement.innerHTML = `
         ${titleHTML}
-        <div class="list-container">
-          <div id="factsheet-list-result" class="loading">
+        <div class="list-container" id="factsheet-list-result">
+          <div class="loading">
             Loading factsheets...
           </div>
         </div>
@@ -158,7 +164,13 @@
           }
 
           const factsheets = data.data.factsheets;
-          renderFactsheetList(factsheets, listResult, this.config.detailPageUrl);
+          // Clear loading state and render items directly into the grid container
+          listResult.innerHTML = "";
+          renderFactsheetList(
+            factsheets,
+            listResult,
+            this.config.detailPageUrl
+          );
         })
         .catch((error) => {
           console.error("Error fetching factsheets:", error);
@@ -169,4 +181,3 @@
 
   window.FactsheetListWidget = FactsheetListWidget;
 })(window);
-
