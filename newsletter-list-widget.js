@@ -82,8 +82,8 @@
       html += `
         <div class="list-item">
           <div class="list-item-content">
-            <h3>${escapeHtml(title)}</h3>
             ${createdAt ? `<p class="list-item-date">${createdAt}</p>` : ""}
+            <h3>${escapeHtml(title)}</h3>
           </div>
           <a href="${escapeHtml(detailUrl)}" class="read-more-btn">Read more</a>
         </div>
