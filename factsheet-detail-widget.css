@@ -4,6 +4,10 @@
   font-family: Arial, sans-serif;
 }
 
+.factsheet-detail-widget {
+  text-align: left;
+}
+
 .factsheet-detail-widget .detail-item {
   max-width: 900px;
   margin: 0 auto;
@@ -20,12 +24,14 @@
   font-size: 2em;
   border-bottom: 2px solid #4caf50;
   padding-bottom: 15px;
+  text-align: left;
 }
 
 .factsheet-detail-widget .detail-date {
   color: #666;
   font-size: 0.9em;
   margin: 0 0 20px 0;
+  text-align: left;
 }
 
 .factsheet-detail-widget .detail-intro {
@@ -46,6 +52,7 @@
   color: #333;
   margin: 0 0 15px 0;
   font-size: 1.3em;
+  text-align: left;
 }
 
 .factsheet-detail-widget .section-content {
@@ -57,12 +64,14 @@
 
 .factsheet-detail-widget .section-content p {
   margin: 15px 0;
+  text-align: left;
 }
 
 .factsheet-detail-widget .detail-link {
   margin-top: 30px;
   padding-top: 20px;
   border-top: 1px solid #eee;
+  text-align: left;
 }
 
 .factsheet-detail-widget .detail-link a {
