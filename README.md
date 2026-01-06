@@ -4,11 +4,6 @@ Embeddable widgets for displaying factsheets from your API. The widgets can be e
 
 ## Files
 
-### Factsheet Widget
-
-- `factsheet-widget.js` - Factsheet widget JavaScript file
-- `factsheet-widget.css` - Factsheet widget stylesheet
-
 ### Factsheet List Widget
 
 - `factsheet-list-widget.js` - Factsheet list widget JavaScript file
@@ -71,27 +66,6 @@ Embed the detail widget on your detail page. The ID is automatically read from t
 
 When users click "Read more", they'll be taken to `factsheet-detail.html?id=123` and the detail widget will automatically load that factsheet.
 
-### Full Content Widget
-
-Add the following code to your HTML page where you want the factsheet widget to appear:
-
-```html
-<!-- 1. Create a container div -->
-<div id="factsheet-widget"></div>
-
-<!-- 2. Load the factsheet widget JavaScript from jsDelivr -->
-<script src="https://cdn.jsdelivr.net/gh/YOUR_USERNAME/YOUR_REPO@main/factsheet-widget.js"></script>
-
-<!-- 3. Initialize the factsheet widget -->
-<script>
-  FactsheetWidget.init({
-    targetId: "factsheet-widget",
-    apiKey: "your-api-key-here",
-    apiBaseUrl: "https://content-api-2020-5886a3310333.herokuapp.com/api",
-  });
-</script>
-```
-
 ## Configuration Options
 
 ### FactsheetListWidget.init() Options
@@ -110,41 +84,37 @@ Add the following code to your HTML page where you want the factsheet widget to 
 - `apiBaseUrl` (string, optional) - Base URL for the API (defaults to the provided URL)
 - `factsheetId` (string, optional) - The ID of the factsheet to display. If not provided, it will be read from the URL parameter `?id=...`
 
-### FactsheetWidget.init() Options
-
-- `targetId` (string, required) - The ID of the HTML element where the widget will be rendered
-- `apiKey` (string, required) - Your API key for authentication
-- `apiBaseUrl` (string, optional) - Base URL for the API (defaults to the provided URL)
-- `title` (string, optional) - Title to display at the top of the widget (default: "Factsheets")
-- `showTitle` (boolean, optional) - Whether to show the title (default: true)
-
 ## Examples
 
-### Factsheet Widget Without Title
+### Factsheet List Widget with Custom Title
 
 ```html
-<div id="factsheet-widget"></div>
-<script src="https://cdn.jsdelivr.net/gh/YOUR_USERNAME/YOUR_REPO@main/factsheet-widget.js"></script>
+<div id="factsheet-list-widget"></div>
+<script src="https://cdn.jsdelivr.net/gh/YOUR_USERNAME/YOUR_REPO@main/factsheet-list-widget.js"></script>
 <script>
-  FactsheetWidget.init({
-    targetId: "factsheet-widget",
+  FactsheetListWidget.init({
+    targetId: "factsheet-list-widget",
     apiKey: "your-api-key-here",
-    showTitle: false,
+    apiBaseUrl: "https://content-api-2020-5886a3310333.herokuapp.com/api",
+    detailPageUrl: "factsheet-detail.html",
+    title: "Property Factsheets",
+    showTitle: true,
   });
 </script>
 ```
 
-### Factsheet Widget with Custom Title
+### Factsheet List Widget Without Title
 
 ```html
-<div id="my-factsheet-widget"></div>
-<script src="https://cdn.jsdelivr.net/gh/YOUR_USERNAME/YOUR_REPO@main/factsheet-widget.js"></script>
+<div id="factsheet-list-widget"></div>
+<script src="https://cdn.jsdelivr.net/gh/YOUR_USERNAME/YOUR_REPO@main/factsheet-list-widget.js"></script>
 <script>
-  FactsheetWidget.init({
-    targetId: "my-factsheet-widget",
+  FactsheetListWidget.init({
+    targetId: "factsheet-list-widget",
     apiKey: "your-api-key-here",
-    title: "Property Factsheets",
-    showTitle: true,
+    apiBaseUrl: "https://content-api-2020-5886a3310333.herokuapp.com/api",
+    detailPageUrl: "factsheet-detail.html",
+    showTitle: false,
   });
 </script>
 ```
@@ -159,11 +129,10 @@ Replace the following in the script src:
 
 Examples:
 
-- `https://cdn.jsdelivr.net/gh/username/repo@main/factsheet-widget.js`
 - `https://cdn.jsdelivr.net/gh/username/repo@main/factsheet-list-widget.js`
 - `https://cdn.jsdelivr.net/gh/username/repo@main/factsheet-detail-widget.js`
-- `https://cdn.jsdelivr.net/gh/username/repo@v1.0.0/factsheet-widget.js`
-- `https://cdn.jsdelivr.net/gh/username/repo@latest/factsheet-widget.js`
+- `https://cdn.jsdelivr.net/gh/username/repo@v1.0.0/factsheet-list-widget.js`
+- `https://cdn.jsdelivr.net/gh/username/repo@latest/factsheet-detail-widget.js`
 
 ## Features
 
